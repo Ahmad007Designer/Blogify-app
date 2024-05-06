@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%-include("./partials/header.ejs") %>
+        <title>SigIn/SignUp</title>
+    </head>
+
+    <body>
+        <%-include("./partials/navbar.ejs") %>
+        <div style="margin-top: 85px;">
+            <% if(msg){ %>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <%= msg %>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <% } %>
+        </div>
+            <div class="container" id="container">
+                <div class="form-container sign-up-container">
+                    <form action="/user/signup" method="POST" enctype="multipart/form-data">
+                        <h1>Create Account</h1>
+                        <div class="social-container">
+                            <a href="#" class="social">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social">
+                                <i class="fab fa-google"></i>
+                            </a>
+                            <a href="#" class="social">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                        <span>OR</span>
+                        <input type="text" placeholder="Name"
+                        name="name" />
+
+                        <input type="email" placeholder="Email" name="email" />
+
+                        <input type="password" placeholder="Password"
+                        name="password" />
+
+                        <input type="file"
+                        name="profileImage" /> 
+
+                        <input type="text" placeholder="User OR Admin"
+                        name="roleType" /> 
+
+                        <button type="submit">Sign Up</button>
+                    </form>
+                </div>
+                <div class="form-container sign-in-container">
+
+
+                    <form action="/user/signin" method="POST">
+                        <h1>Sign in</h1>
+                        <div class="social-container">
+                            <a href="#" class="social">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social">
+                                <i class="fab fa-google"></i>
+                            </a>
+                            <a href="#" class="social">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                        <span>or use your account</span>
+
+                        <input type="email" placeholder="Email"  name="email"/>
+
+                        <input type="password" placeholder="Password" name="password" />
+
+                        <a href="/user/forgate">Forgot your password?</a>
+                        <button type="submit">Sign In</button>
+                    </form>
+                </div>
+
+                <div class="overlay-container">
+                    <div class="overlay">
+                        <div class="overlay-panel overlay-left">
+                            <h1>Welcome Back!</h1>
+                            <p>To keep connected with us please login with your
+                                personal info</p>
+                            <button class="ghost" id="signIn">Sign In</button>
+                        </div>
+                        <div class="overlay-panel overlay-right">
+                            <h1>Hello, Friend!</h1>
+                            <p>Enter your personal details and start journey
+                                with us</p>
+                            <button class="ghost" id="signUp">Sign Up</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%-include("./partials/footer.ejs")%>
+        <%-include("./partials/script.ejs")%>
+    </body>
+</html>

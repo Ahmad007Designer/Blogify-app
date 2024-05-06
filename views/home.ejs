@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%-include("./partials/header.ejs") %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Home-Page</title>
+  <style>
+    .custom-container {
+      justify-content: center;
+      padding: 0 40px;
+      margin-top: 40px;
+      margin-bottom: 100px;
+      justify-content: center;
+    }
+
+    .custom-container .row {
+      margin: 0 -15px;
+    }
+
+    .custom-container .col {
+      padding: 0 15px;
+    }
+
+    .custom-container .card {
+      border: none;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .custom-container .card:hover {
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .custom-container .card-img-top {
+      width: 100%;
+      height: 200px;
+      transition: transform 0.3s ease;
+    }
+
+    .custom-container .card:hover .card-img-top {
+      transform: scale(1.05);
+    }
+
+    .custom-container .card-body {
+      padding: 20px;
+    }
+
+    .custom-container .card-title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .custom-container .card-text {
+      font-size: 14px;
+      color: #666;
+    }
+
+    .custom-container .card-body button {
+      background-color: #FF4B2B;
+      border: 3px solid #FF4B2B;
+      color: #fff;
+      transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    }
+
+    .custom-container .card-body button:hover {
+      background-color: #f86950;
+      border-color: #FF4B2B;
+      color: #fff;
+    }
+
+    .navbar {
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 576px) {
+      .custom-container .col {
+        max-width: 100%;
+      }
+    }
+
+    @media (min-width: 576px) {
+      .custom-container .col {
+        max-width: 50%;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .custom-container .col {
+        max-width: 33.3333%;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .custom-container .col {
+        max-width: 25%;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .custom-container .col {
+        max-width: 20%;
+      }
+    }
+    
+    .limit-lines {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; 
+    -webkit-box-orient: vertical;
+}
+  </style>
+</head>
+<body>
+ <div class="new-nav">
+  <%-include("./partials/navbar.ejs") %>
+ </div>
+  <div class="custom-container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4">
+    <% blog.forEach(blg => { %>
+      <div class="col mb-4">
+        <div class="card">
+          <img src="/uploads/<%= blg.coverImage %>" class="card-img-top" alt="Blog Image">
+
+          <div class="card-body">
+            <h5 class="card-title"><%= blg.title %></h5>
+            <p class="card-text limit-lines"><%= blg.body %></p>
+            <a href="/blog/<%= blg._id %>" class="btn btn-primary">View</a>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+
+  <%-include("./partials/footer.ejs")%>
+  <%-include("./partials/script.ejs")%>
+</body>
+</html>

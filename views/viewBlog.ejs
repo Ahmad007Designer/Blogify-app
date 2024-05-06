@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%-include("./partials/header.ejs")  %>
+        <title>Blog</title>
+    </head>
+    <body>
+        <%-include("./partials/navbar.ejs")  %>
+        <div class="container" style="margin-top: 120px; margin-bottom: 100px;">
+            <h2 class="mb-4">Title Name:-  <%=blog.title %></h2>
+            <img src="/uploads/<%=blog.coverImage  %>" alt="" style="width: 100%; height: auto; max-width: 700px;" >
+            <p style=" font-size: larger;"><%=blog.body  %> </p>
+            <div >   
+            <div class="m-2" style="display: flex; justify-content: flex-end; align-items: center;">
+                <img src="/images/<%=blog.createdBy.profileImage  %>" alt="Profile_Img" style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden;" ><b style="margin-left: 10px; color: #FF4B2B;"><%= blog.createdBy.name %></b>
+            </div>
+            <h6 style="text-align: end;">Creator of this Blog</h6>  
+        </div>
+
+        <%if(user) { %>
+            <div class="mt-4">
+                <form action="/blog/<%=blog._id%>" method="POST">
+                    <h1>Comment(<%=comments.length%>)</h1>            
+                    <input type="text" placeholder="Enter Your Comment"
+                    name="content" />
+                    <button type="submit">Add</button>
+                </form>
+            </div>
+        <% }else{ %> 
+            <div class="mt-4">
+                <form action="/user/signin" method="GET">
+                    <h1>Comment(<%=comments.length%>)</h1>            
+                    <input type="text" placeholder="Enter Your Comment"
+                    name="content" />
+                    <button type="submit">Add</button>
+                </form>
+            </div>
+            <% } %>
+
+
+
+
+            <div class="my-4">
+                <% comments.forEach(comment=>{ %>
+                    <div>
+                        <img src="/images/<%= comment.createdBy.profileImage %>" alt="Profile_Img" style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden;" >
+                        <%= comment.createdBy.name %>
+                        <pre><%=comment.content%></pre>
+                    </div>
+                
+                <% }) %>
+            </div>
+
+           
+
+
+            
+         </div>
+         
+
+        
+
+
+
+
+         <%-include("./partials/footer.ejs")%>
+        <%-include("./partials/script.ejs")%>
+    </body>
+</html>

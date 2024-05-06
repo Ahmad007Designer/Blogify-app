@@ -1,0 +1,27 @@
+!<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%-include("./partials/header.ejs")  %>
+        <title>Contact-Us</title>
+    </head>
+    <body>
+        <%-include("./partials/navbar.ejs")  %>
+        <div class="home-section">
+            <div class="container"  style="width: 100%; justify-content: center; align-items: center;display: flex; background: linear-gradient(to right, #FF4B2B, #FF416C)">
+                <div class="form-container">
+                    <form action="/blog" method="POST">
+                        <h1>Contact Us</h1>
+                        <input type="email" placeholder="Your Email" name="email" />
+
+                        <input type="text" placeholder="Your Name" name="name" />
+                        <textarea name="body" id="" cols="30" rows="5" style="margin-bottom: 10px;"></textarea>
+                        
+                        <button type="submit">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <%-include("./partials/footer.ejs")%>
+        <%-include("./partials/script.ejs")%>
+    </body>
+</html>

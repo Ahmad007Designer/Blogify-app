@@ -1,0 +1,49 @@
+<footer>
+    <p>
+        &copy Copyright 2024 <a href="/">
+        <b style="color:#FF4B2B";>Blogify-APP</b>. 
+        </a>All Rights Reserved. <b>|</b>
+        Created with  by
+        <a target="_blank" href="https://florin-pop.com"
+            style="color:#FF4B2B ;"><b>Ahmad Husain</b> </a> <i class="fa fa-heart"></i>
+    </p>
+</footer>
+<script>
+
+const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+
+signUpButton.addEventListener('click', () => {
+	container.classList.add("right-panel-active");
+});
+
+signInButton.addEventListener('click', () => {
+	container.classList.remove("right-panel-active");
+});
+
+
+//popup message
+function showPopupMessage(message, duration) {
+    var popupMessage = document.getElementById('popupMessage');
+    popupMessage.textContent = message;
+    popupMessage.style.display = 'block';
+
+    // Hide the message after the time
+    setTimeout(function() {
+        hidePopupMessage();
+    }, duration);
+}
+
+document.querySelectorAll('.dropdown-toggle').forEach(item => {
+  item.addEventListener('click', event => {
+ 
+    if(event.target.classList.contains('dropdown-toggle') ){
+      event.target.classList.toggle('toggle-change');
+    }
+    else if(event.target.parentElement.classList.contains('dropdown-toggle')){
+      event.target.parentElement.classList.toggle('toggle-change');
+    }
+  })
+});
+</script>
